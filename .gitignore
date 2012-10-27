@@ -14,3 +14,10 @@ tmp
 test-result
 eclipse
 server.pid
+
+bin/
+data/
+dist/
+test-result/
+tmp/
+modules/
