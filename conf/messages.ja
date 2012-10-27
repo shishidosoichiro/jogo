@@ -1,0 +1,10 @@
+# You can specialize this file for each language.
+# For example, for French create a messages.fr file
+#
+
+site.name=Jogo
+site.version=0.0.1
+site.description=Jogoは、まあなんというか、ホームページのファンネル解析をやるためのサイトです。ええ。
+
+navbar.home=ホーム
+navbar.logout=ログアウト
