@@ -1,0 +1,27 @@
+*{ You can use plain selenium command using the selenium tag }*
+
+#{fixture delete:'all', load:['users.yml'] /}
+
+#{selenium}
+		// login
+    open('/')
+    clickAndWait('sign-in')
+
+		// must show 'dashboard' by default.
+		assertLocation('http://localhost:9000/dashboard')
+		// must show user's track key
+    assertText('css=.track-key', '2468abcd')
+
+		// must redirect '/' to '/dashboard' , if login.
+    open('/')
+		assertLocation('http://localhost:9000/dashboard')
+
+		// must go to '/', if logout.
+    clickAndWait('css=a[href="/authentication/logout"]')
+		assertLocation('http://localhost:9000/')
+
+		// must redirect to '/', if not login.
+    open('/dashboard')
+		assertLocation('http://localhost:9000/')
+
+#{/selenium}

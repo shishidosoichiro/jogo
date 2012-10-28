@@ -1,3 +1,94 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
 #{set nav:'home' /}
+
+<section id="track-key">
+	<h1>${loginuser.fullname} <small>${loginuser.username}</small></h1>
+</section>
+
+<hr />
+
+<section id="track-key">
+	<h2>&{'track.key'}</h2>
+	<dl class="dl-horizontal">
+		<dt>&{'track.key'}</dt>
+		<dd class="track-key">${loginuser.trackKey}</dd>
+	</dl>
+</section>
+
+<hr />
+
+<section id="script">
+	<h2>&{'script'} <small>&{'script.installation'}</small></h2>
+	<div>
+<pre class="prettyprint linenums" style="margin-bottom: 9px;">
+&lt;script src="http://jogo.herokuapp.com/scripts/jquery.js"&gt;&lt;/script&gt;
+&lt;script src="http://jogo.herokuapp.com/scripts/jquery.cookie.js"&gt;&lt;/script&gt;
+&lt;script src="http://jogo.herokuapp.com/scripts/purl.js"&gt;&lt;/script&gt;
+&lt;script src="http://jogo.herokuapp.com/scripts/uuid.js"&gt;&lt;/script&gt;
+&lt;script src="http://jogo.herokuapp.com/scripts/jogo.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+	JOGO.setup('${loginuser.trackKey}', 'testcase A');
+&lt;/script&gt;
+</pre>
+	</div>
+</section>
+
+<hr />
+
+<section id="event-data">
+	<h2>&{'event.data'}</h2>
+	#{if events }
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>
+						&{'createdAt'}
+					</th>
+					<th>
+						&{'sitename'}
+					</th>
+					<th>
+						&{'casename'}
+					</th>
+					<th>
+						&{'sessionId'}
+					</th>
+					<th>
+						&{'eventname'}
+					</th>
+					<th>
+						&{'value'}
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+			#{list items:events, as:'event' }
+				<tr>
+					<td>
+						${event.createdAt}
+					</td>
+					<td>
+						${event.site.name}
+					</td>
+					<td>
+						${event.testcase.name}
+					</td>
+					<td>
+						${event.sessionId}
+					</td>
+					<td>
+						${event.name}
+					</td>
+					<td>
+						${event.value}
+					</td>
+				</tr>
+			#{/list}
+			</tbody>
+		</table>
+	#{/if}
+	#{else}
+		&{'no.event.data'}
+	#{/else}
+</section>

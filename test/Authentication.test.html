@@ -1,0 +1,18 @@
+*{ You can use plain selenium command using the selenium tag }*
+
+#{selenium}
+    open('/')
+
+		// login
+    assertElementPresent('sign-in-with-twitter')
+    assertElementPresent('sign-in')
+    clickAndWait('sign-in')
+    assertTextPresent('shishidohinata')
+    assertTextPresent('ログアウト')
+    assertLocation('http://localhost:9000/dashboard')
+
+		// logout
+    clickAndWait('css=a[href="/authentication/logout"]')
+    assertElementPresent('sign-in-with-twitter')
+
+#{/selenium}

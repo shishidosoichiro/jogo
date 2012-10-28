@@ -1,0 +1,24 @@
+*{ You can use plain selenium command using the selenium tag }*
+
+#{fixture delete:'all', load:['users.yml'] /}
+
+#{selenium}
+
+		// tarck a event data.
+    open('/track?trackKey=2468abcd&sitename=siteofshishido&sessionId=123456789&casename=testA&eventname=soundcloud&value=1')
+		// must response 'successful'.
+    assertTextPresent('successful')
+
+    open('/')
+    clickAndWait('sign-in')
+    
+		// must show tarcking data.
+    assertTextPresent('siteofshishido')
+    assertTextPresent('123456789')
+    assertTextPresent('testA')
+    assertTextPresent('soundcloud')
+
+		// logout
+    clickAndWait('css=a[href="/authentication/logout"]')
+
+#{/selenium}
