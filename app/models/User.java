@@ -4,6 +4,7 @@ import java.util.*;
 import javax.persistence.*;
 import play.data.binding.*;
 import play.data.validation.*;
+import play.libs.Codec;
 
 import play.db.jpa.*;
  
@@ -20,12 +21,11 @@ public class User extends Model {
 	public String fullname;
 	public String iconUrl;
 	public String profile;
-
-	@As("yyyy-MM-dd HH:mm:ss.S Z") public Date savedAt;
-
+	public String trackKey;
+	
 	public User(String username) {
 		this.username = username;
-		this.savedAt = new Date();
+		this.trackKey = Codec.UUID();
 	}
 	public boolean equals(User user) {
 		if ( user == null ) return false;
@@ -33,17 +33,17 @@ public class User extends Model {
 	}
 
 	/**
-		Return username + savedAt
+		Get user by username.
 	*/
-	public String toString() {
-		return username + "(savedAt:" + this.savedAt.toString() + ")";
+	public static User get(String username) {
+		return User.find("byUsername", username).first();
 	}
 
 	/**
 		Get user by username.
 	*/
-	public static User get(String username) {
-		return User.find("byUsername", username).first();
+	public static User getByTrackKey(String tracKey) {
+		return User.find("byTrackKey", tracKey).first();
 	}
 
 }

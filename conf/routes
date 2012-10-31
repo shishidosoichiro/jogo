@@ -5,12 +5,14 @@
 # Home page
 GET     /                                       Application.index
 GET     /dashboard                              Dashboard.index
+GET     /track                                  Track.put(format:'json')
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
 
 # Map static resources from the /app/public folder to the /public path
 GET     /public/                                staticDir:public
+GET     /scripts/                               staticDir:scripts
 
 # Catch all
 *       /{controller}/{action}                  {controller}.{action}

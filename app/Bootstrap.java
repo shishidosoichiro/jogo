@@ -13,7 +13,7 @@ public class Bootstrap extends Job {
         // Check if the database is empty
         if(User.count() == 0) {
             Fixtures.deleteAll();
-            Fixtures.loadModels("data.yml");
+            Fixtures.loadModels("users.yml");
         }
     }
 }

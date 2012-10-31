@@ -8,3 +8,11 @@ site.description=Jogoは、まあなんというか、ホームページのフ�
 
 navbar.home=ホーム
 navbar.logout=ログアウト
+
+track.key=トラックキー
+
+script=スクリプト
+script.installation=下記のコードをホームページの各ページに張って下さい。
+
+event.data=イベント・データ
+
