@@ -16,7 +16,7 @@ create table site (
 		id bigserial not null,
 		name varchar(255),
 		url varchar(255),
-		user_id bigserial,
+		jogo_user_id bigserial,
 		primary key (id)
 );
 
@@ -37,11 +37,11 @@ create table twitter_account (
 		secret varchar(255),
 		token varchar(255),
 		twitter_id varchar(255),
-		user_id bigserial,
+		jogo_user_id bigserial,
 		primary key (id)
 );
 
-create table user (
+create table jogo_user (
 		id bigserial not null,
 		fullname varchar(255),
 		iconUrl varchar(255),
@@ -62,9 +62,9 @@ alter table event
 		references site;
 
 alter table site 
-		add constraint fk_site_user 
-		foreign key (user_id) 
-		references user;
+		add constraint fk_site_jogo_user 
+		foreign key (jogo_user_id) 
+		references jogo_user;
 
 alter table testcase 
 		add constraint fk_testcase_site
@@ -72,9 +72,9 @@ alter table testcase
 		references site;
 
 alter table twitter_account 
-		add constraint fk_twitter_account_user
-		foreign key (user_id) 
-		references user;
+		add constraint fk_twitter_account_jogo_user
+		foreign key (jogo_user_id) 
+		references jogo_user;
 
 create sequence hibernate_sequence;
 
@@ -86,13 +86,13 @@ alter table event
 		drop constraint fk_event_site;
 
 alter table site 
-		drop constraint fk_site_user;
+		drop constraint fk_site_jogo_user;
 
 alter table testcase 
 		drop constraint fk_testcase_site;
 
 alter table twitter_account 
-		drop constraint fk_twitter_account_user;
+		drop constraint fk_twitter_account_jogo_user;
 
 drop table event cascade;
 
@@ -102,6 +102,6 @@ drop table testcase cascade;
 
 drop table twitter_account cascade;
 
-drop table user cascade;
+drop table jogo_user cascade;
 
 drop sequence hibernate_sequence;
