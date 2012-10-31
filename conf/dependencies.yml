@@ -1,4 +1,5 @@
 # Application dependencies
 
 require:
-    - play -> db 1.1.1
+    - play
+#    - play -> db 1.1.1
