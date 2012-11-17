@@ -189,6 +189,7 @@
 					widget.bind(SC.Widget.Events.PLAY, function(data){
 						widget.getCurrentSound(function (value){
 							JOGO.track('Play Soundcloud', value.title);
+							if (track) track('Play Soundcloud', value.title);
 						});
 					});
 				});
@@ -205,6 +206,7 @@
 								if(event.data == YT.PlayerState.PLAYING) {
 									$.getJSON("http://gdata.youtube.com/feeds/api/videos/" + id + "?alt=json", function(data){
 										JOGO.track('Play Youtube', data.entry.title["$t"]);
+										if (track) track('Play Youtube', data.entry.title["$t"]);
 									});
 								}
 							}
@@ -218,6 +220,7 @@
 			$('a[href*="www.amazon.co.jp"]').click(function(){
 				var code = $(this).url().segment(3);
 				JOGO.track('Go To Amazon', code);
+				if (track) track('Go To Amazon', code);
 			});
 		});
 	});
