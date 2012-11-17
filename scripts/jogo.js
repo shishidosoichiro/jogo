@@ -37,7 +37,7 @@
 			$.ajax({type: "GET", "url": url});
 		},
 		visit: function(){
-			this.track('visit');
+			this.track('Visit', window.location.pathname);
 		}
 	};
 	
