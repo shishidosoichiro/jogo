@@ -9,7 +9,7 @@ import play.libs.Codec;
 import play.db.jpa.*;
  
 @Entity
-@Table(name="user")
+@Table(name="jogo_user")
 public class User extends Model {
 
 	@Required
